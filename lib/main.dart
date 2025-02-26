@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutterfirstproject/profile-screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const WhatsApp(),
+      home: Scaffold(
+        body: whatsapp(),
+      ),
     );
   }
 }
