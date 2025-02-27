@@ -18,30 +18,16 @@ class whatsapp extends StatelessWidget {
         child: Container(
           child: Column(
             children: [
-              CustomTile(
-                title: 'Profile',
-                subtitle: 'Tap to view your profile',
-                leadingIcon: Icons.account_circle,
-                trailingIcon: Icons.arrow_forward_ios,
-              ),
-              CustomTile(
-                title: 'Chats',
-                subtitle: 'Tap to view your chats',
-                leadingIcon: Icons.chat,
-                trailingIcon: Icons.arrow_forward_ios,
-              ),
-              CustomTile(
-                title: 'Calls',
-                subtitle: 'Tap to view your calls',
-                leadingIcon: Icons.call,
-                trailingIcon: Icons.arrow_forward_ios,
-              ),
-              CustomTile(
-                title: 'Settings',
-                subtitle: 'Tap to view your settings',
-                leadingIcon: Icons.settings,
-                trailingIcon: Icons.arrow_forward_ios,
-              ),
+              customtile(
+                  name: "name",
+                  time: "time",
+                  subtitle: "subtitle",
+                  leadingIcon: Icons.phone_in_talk_sharp),
+              customtile(
+                  name: "Abdullah",
+                  time: "time",
+                  subtitle: "subtitle",
+                  leadingIcon: Icons.phone),
             ],
           ),
         ),

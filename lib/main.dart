@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfirstproject/profile-screen.dart';
+import 'package:flutterfirstproject/widgets/counter-view.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: whatsapp(),
+        body: Counterview(),
       ),
     );
   }
