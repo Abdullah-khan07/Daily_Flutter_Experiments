@@ -9,6 +9,13 @@ class Counterview extends StatefulWidget {
 
 class _CounterviewState extends State<Counterview> {
   int counter = 0;
+  List<String> fereind = [
+    "Ali",
+    "Hassan",
+    "Hussain",
+    "Ali",
+    "Hassan",
+  ];
 
   void incrementCounter() {
     setState(() {
@@ -38,30 +45,28 @@ class _CounterviewState extends State<Counterview> {
                       style: TextStyle(fontSize: 20),
                     ),
                   ),
+                  SizedBox(height: 20),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: fereind.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: EdgeInsets.only(bottom: 1.5),
+                        child: ListTile(
+                          title: Text(
+                            fereind[index],
+                            style: TextStyle(
+                                color:
+                                    const Color.fromARGB(255, 227, 230, 233)),
+                          ),
+                          tileColor: Color.fromARGB(255, 168, 79, 79),
+                        ),
+                      );
+                    },
+                  ),
                 ],
               ),
-            ),
-            SizedBox(height: 20),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.only(bottom: 0.5),
-                  child: ListTile(
-                    tileColor: Color.fromARGB(255, 57, 53, 99),
-                    title: Text(
-                      'Item $index',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    subtitle: Text(
-                      'khan hai larke',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                );
-              },
             ),
           ],
         ),
