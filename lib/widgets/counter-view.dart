@@ -13,9 +13,6 @@ class _CounterviewState extends State<Counterview> {
   List<String> fereind = [
     "Ali",
     "Hassan",
-    "Hussain",
-    "Ali",
-    "Hassan",
   ];
 
   void incrementCounter() {
