@@ -23,42 +23,85 @@ class _CounterviewState extends State<Counterview> {
 
   void additem() {
     setState(() {
-      fereind.add("Ali");
+      fereind.add(feriendlistcontroller.text);
+      feriendlistcontroller.clear();
     });
+  }
+
+  void editItem(int index) {
+    feriendlistcontroller.text = fereind[index];
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Edit item"),
+          content: TextField(
+            controller: feriendlistcontroller,
+            decoration: InputDecoration(
+              hintText: "Enter item",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              ),
+              filled: true,
+              fillColor: Colors.white,
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 19.0),
+            ),
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  fereind[index] = feriendlistcontroller.text;
+                  feriendlistcontroller.clear();
+                  Navigator.pop(context);
+                });
+              },
+              child: Text("Edit"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("Cancel"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: TextField(
-          decoration: InputDecoration(
-            hintText: "Enter item",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        title: Row(
+          children: [
+            Expanded(
+              child: TextField(
+                controller: feriendlistcontroller,
+                decoration: InputDecoration(
+                  hintText: "Enter item",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 19.0),
+                ),
+              ),
             ),
-            filled: true,
-            fillColor: Colors.white,
-            contentPadding:
-                EdgeInsets.symmetric(vertical: 10.0, horizontal: 19.0),
-          ),
-          controller: feriendlistcontroller,
+            SizedBox(width: 10),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(100, 40), // width, height
+              ),
+              onPressed: additem,
+              child: Text("Add item"),
+            ),
+          ],
         ),
-        actions: [
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              minimumSize: Size(180, 40), // width, height
-            ),
-            onPressed: () {
-              setState(() {
-                fereind.add(feriendlistcontroller.text);
-                feriendlistcontroller.clear();
-              });
-              print(feriendlistcontroller.text);
-            },
-            child: Text("Add item"),
-          ),
-        ],
       ),
       body: SafeArea(
         child: Column(
@@ -72,7 +115,7 @@ class _CounterviewState extends State<Counterview> {
                       children: [
                         Text(
                           "Counter: $counter",
-                          style: TextStyle(fontSize: 27),
+                          style: TextStyle(fontSize: 30),
                         ),
                         SizedBox(height: 20),
                         ElevatedButton(
@@ -97,15 +140,28 @@ class _CounterviewState extends State<Counterview> {
                                       color: const Color.fromARGB(
                                           255, 227, 230, 233)),
                                 ),
-                                tileColor: Color.fromARGB(255, 168, 79, 79),
-                                trailing: IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        fereind.removeAt(index);
-                                      });
-                                    },
-                                    icon: Icon(Icons.delete, size: 20),
-                                    color: Colors.white),
+                                tileColor: Color.fromARGB(255, 39, 65, 209),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        editItem(index);
+                                      },
+                                      icon: Icon(Icons.edit, size: 20),
+                                      color: Colors.white,
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          fereind.removeAt(index);
+                                        });
+                                      },
+                                      icon: Icon(Icons.delete, size: 20),
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           },
